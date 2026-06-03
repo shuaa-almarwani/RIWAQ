@@ -4,16 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Notification {
@@ -26,31 +25,22 @@ public class Notification {
     private String message;
 
     @NotEmpty
-    @Pattern(regexp = "CREATED|UNREAD|READ|DELETED", message = "Status must be CREATED, UNREAD, READ, or DELETED")
-    @Column(nullable = false)
-    private String status;
-
-    @NotEmpty
     @Pattern(regexp = "FRIEND_REQUEST|FRIEND_ACCEPTED|POST_LIKE|NEW_REVIEW|GENERAL", message = "Type must be FRIEND_REQUEST, FRIEND_ACCEPTED, POST_LIKE, NEW_REVIEW, or GENERAL")
     @Column(nullable = false)
     private String type;
 
-    private Integer referenceId;
+    private Boolean sendByEmail;
+    private Boolean sendByWhatsApp;
 
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @NotNull
-    private Integer recipientId;
+     @ManyToOne
+     @JoinColumn(name = "recipient_id", insertable = false, updatable = false)
+     private User recipient;
 
-    private Integer senderId;
-
-    // @ManyToOne
-    // @JoinColumn(name = "recipient_id", insertable = false, updatable = false)
-    // private User recipient;
-
-    // @ManyToOne
-    // @JoinColumn(name = "sender_id", insertable = false, updatable = false)
-    // private User sender;
+     @ManyToOne
+     @JoinColumn(name = "sender_id", insertable = false, updatable = false)
+     private User sender;
 }

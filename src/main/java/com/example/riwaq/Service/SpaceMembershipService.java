@@ -1,8 +1,8 @@
 package com.example.riwaq.Service;
 
 import com.example.riwaq.Api.ApiException;
-import com.example.riwaq.DTO.DTOIN.SpaceMembershipDTOIn;
-import com.example.riwaq.DTO.DTOOUT.SpaceMembershipDTOOut;
+import com.example.riwaq.DTO.IN.SpaceMembershipDTOIn;
+import com.example.riwaq.DTO.OUT.SpaceMembershipDTOOut;
 import com.example.riwaq.Model.SpaceMembership;
 import com.example.riwaq.Repository.SpaceMembershipRepository;
 import lombok.RequiredArgsConstructor;
@@ -53,24 +53,24 @@ public class SpaceMembershipService {
     public void updateMembership(Integer membershipId,
                                  SpaceMembershipDTOIn dto){
 
-        SpaceMembership membership = spaceMembershipRepository
-                .findByMembershipId(membershipId)
-                .orElseThrow(() ->
-                        new ApiException("Membership not found"));
-
-        membership.setSpaceId(dto.getSpaceId());
-        membership.setUserId(dto.getUserId());
-
-        spaceMembershipRepository.save(membership);
+//        SpaceMembership membership = spaceMembershipRepository
+//                .findByMembershipId(membershipId)
+//                .orElseThrow(() ->
+//                        new ApiException("Membership not found"));
+//
+//        membership.setSpaceId(dto.getSpaceId());
+//        membership.setUserId(dto.getUserId());
+//
+//        spaceMembershipRepository.save(membership);
     }
 
     public void deleteMembership(Integer membershipId){
 
-        SpaceMembership membership = spaceMembershipRepository
-                .findByMembershipId(membershipId)
-                .orElseThrow(() ->
-                        new ApiException("Membership not found"));
-
-        spaceMembershipRepository.delete(membership);
+//        SpaceMembership membership = spaceMembershipRepository
+//                .findByMembershipId(membershipId)
+//                .orElseThrow(() ->
+//                        new ApiException("Membership not found"));
+//
+//        spaceMembershipRepository.delete(membership);
     }
 }

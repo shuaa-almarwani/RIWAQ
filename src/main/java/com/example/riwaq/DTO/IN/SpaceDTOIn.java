@@ -1,6 +1,5 @@
-package com.example.riwaq.DTO.DTOIN;
+package com.example.riwaq.DTO.IN;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

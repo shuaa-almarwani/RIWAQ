@@ -5,14 +5,16 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Review {
@@ -38,11 +40,19 @@ public class Review {
     @NotNull
     private Integer bookId;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    // private User user;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 
-    // @ManyToOne
-    // @JoinColumn(name = "book_id", insertable = false, updatable = false)
-    // private Book book;
+    @UpdateTimestamp // I have never used this annotation before, I hope it works properly.
+    @Column(updatable = false)
+    private LocalDateTime updatedAt;
+
+//     @ManyToOne
+//     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+//     private User user;
+
+//     @ManyToOne
+//     @JoinColumn(name = "book_id", insertable = false, updatable = false)
+//     private Book book;
 }

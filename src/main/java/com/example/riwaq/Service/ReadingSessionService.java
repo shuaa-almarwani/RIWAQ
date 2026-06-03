@@ -1,8 +1,8 @@
 package com.example.riwaq.Service;
 
 import com.example.riwaq.Api.ApiException;
-import com.example.riwaq.DTO.DTOIN.ReadingSessionDTOIn;
-import com.example.riwaq.DTO.DTOOUT.ReadingSessionDTOOut;
+import com.example.riwaq.DTO.IN.ReadingSessionDTOIn;
+import com.example.riwaq.DTO.OUT.ReadingSessionDTOOut;
 import com.example.riwaq.Model.ReadingSession;
 import com.example.riwaq.Repository.ReadingSessionRepository;
 import lombok.RequiredArgsConstructor;
@@ -50,23 +50,23 @@ public class ReadingSessionService {
     public void updateSession(Integer sessionId,
                               ReadingSessionDTOIn dto){
 
-        ReadingSession session = readingSessionRepository
-                .findBySessionId(sessionId)
-                .orElseThrow(() ->
-                        new ApiException("Session not found"));
-
-        session.setBookId(dto.getBookId());
-
-        readingSessionRepository.save(session);
+//        ReadingSession session = readingSessionRepository
+//                .findBySessionId(sessionId)
+//                .orElseThrow(() ->
+//                        new ApiException("Session not found"));
+//
+//        session.setBookId(dto.getBookId());
+//
+//        readingSessionRepository.save(session);
     }
 
     public void deleteSession(Integer sessionId){
 
-        ReadingSession session = readingSessionRepository
-                .findBySessionId(sessionId)
-                .orElseThrow(() ->
-                        new ApiException("Session not found"));
-
-        readingSessionRepository.delete(session);
+//        ReadingSession session = readingSessionRepository
+//                .findBySessionId(sessionId)
+//                .orElseThrow(() ->
+//                        new ApiException("Session not found"));
+//
+//        readingSessionRepository.delete(session);
     }
 }

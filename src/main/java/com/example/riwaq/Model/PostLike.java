@@ -1,16 +1,13 @@
 package com.example.riwaq.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostLike {
@@ -25,11 +22,11 @@ public class PostLike {
     @NotNull
     private Integer postId;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    // private User user;
-
-    // @ManyToOne
-    // @JoinColumn(name = "post_id", insertable = false, updatable = false)
-    // private Post post;
+//     @ManyToOne
+//     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+//     private User user;
+//
+//     @ManyToOne
+//     @JoinColumn(name = "post_id", insertable = false, updatable = false)
+//     private Post post;
 }

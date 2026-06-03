@@ -4,14 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Friendship {
@@ -26,16 +23,15 @@ public class Friendship {
     @NotNull
     private Integer receiverId;
 
-    @NotEmpty
     @Pattern(regexp = "PENDING|ACCEPTED|BLOCKED|REJECTED", message = "Status must be PENDING, ACCEPTED, BLOCKED, or REJECTED")
     @Column(nullable = false)
-    private String status;
+    private String status = "PENDING";
 
-    // @ManyToOne
-    // @JoinColumn(name = "sender_id", insertable = false, updatable = false)
-    // private User sender;
-
-    // @ManyToOne
-    // @JoinColumn(name = "receiver_id", insertable = false, updatable = false)
-    // private User receiver;
+//     @ManyToOne
+//     @JoinColumn(name = "sender_id", insertable = false, updatable = false)
+//     private User sender;
+//
+//     @ManyToOne
+//     @JoinColumn(name = "receiver_id", insertable = false, updatable = false)
+//     private User receiver;
 }

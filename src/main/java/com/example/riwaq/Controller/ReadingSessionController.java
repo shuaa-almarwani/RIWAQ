@@ -1,7 +1,7 @@
 package com.example.riwaq.Controller;
 
 import com.example.riwaq.Api.ApiResponse;
-import com.example.riwaq.DTO.DTOIN.ReadingSessionDTOIn;
+import com.example.riwaq.DTO.IN.ReadingSessionDTOIn;
 import com.example.riwaq.Service.ReadingSessionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

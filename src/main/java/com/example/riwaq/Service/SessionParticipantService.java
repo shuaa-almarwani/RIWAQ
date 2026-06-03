@@ -1,7 +1,7 @@
 package com.example.riwaq.Service;
 
-import com.example.riwaq.DTO.DTOIN.SessionParticipantDTOIn;
-import com.example.riwaq.DTO.DTOOUT.SessionParticipantDTOOut;
+import com.example.riwaq.DTO.IN.SessionParticipantDTOIn;
+import com.example.riwaq.DTO.OUT.SessionParticipantDTOOut;
 import com.example.riwaq.Model.SessionParticipant;
 import com.example.riwaq.Repository.SessionParticipantRepository;
 import lombok.RequiredArgsConstructor;

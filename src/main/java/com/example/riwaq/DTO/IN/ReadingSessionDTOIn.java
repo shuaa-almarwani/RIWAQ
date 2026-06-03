@@ -1,4 +1,4 @@
-package com.example.riwaq.DTO.DTOIN;
+package com.example.riwaq.DTO.IN;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

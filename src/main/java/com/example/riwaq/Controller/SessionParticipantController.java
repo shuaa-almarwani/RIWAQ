@@ -1,7 +1,7 @@
 package com.example.riwaq.Controller;
 
 import com.example.riwaq.Api.ApiResponse;
-import com.example.riwaq.DTO.DTOIN.SessionParticipantDTOIn;
+import com.example.riwaq.DTO.IN.SessionParticipantDTOIn;
 import com.example.riwaq.Service.SessionParticipantService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
