@@ -47,26 +47,26 @@ public class ReadingSessionService {
         return dtoOutList;
     }
 
-    public void updateSession(Integer sessionId,
-                              FriendshipDTOIn.ReadingSessionDTOIn dto){
+//    public void updateSession(Integer sessionId,
+//                              FriendshipDTOIn.ReadingSessionDTOIn dto){
+//
+//        ReadingSession session = readingSessionRepository
+//                .findBySessionId(sessionId)
+//                .orElseThrow(() ->
+//                        new ApiException("Session not found"));
+//
+//        session.setBookId(dto.getBookId());
+//
+//        readingSessionRepository.save(session);
+//    }
 
-        ReadingSession session = readingSessionRepository
-                .findBySessionId(sessionId)
-                .orElseThrow(() ->
-                        new ApiException("Session not found"));
-
-        session.setBookId(dto.getBookId());
-
-        readingSessionRepository.save(session);
-    }
-
-    public void deleteSession(Integer sessionId){
-
-        ReadingSession session = readingSessionRepository
-                .findBySessionId(sessionId)
-                .orElseThrow(() ->
-                        new ApiException("Session not found"));
-
-        readingSessionRepository.delete(session);
-    }
+//    public void deleteSession(Integer sessionId){
+//
+//        ReadingSession session = readingSessionRepository
+//                .findBySessionId(sessionId)
+//                .orElseThrow(() ->
+//                        new ApiException("Session not found"));
+//
+//        readingSessionRepository.delete(session);
+//    }
 }

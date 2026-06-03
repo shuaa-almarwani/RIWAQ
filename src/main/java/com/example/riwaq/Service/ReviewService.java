@@ -36,8 +36,8 @@ public class ReviewService {
         Review review = new Review();
         review.setContent(dto.getContent());
         review.setRating(dto.getRating());
-        review.setUserId(dto.getUserId());
-        review.setBookId(dto.getBookId());
+//        review.setUserId(dto.getUserId());
+//        review.setBookId(dto.getBookId());
         reviewRepository.save(review);
     }
 
@@ -48,8 +48,8 @@ public class ReviewService {
         }
         review.setContent(dto.getContent());
         review.setRating(dto.getRating());
-        review.setUserId(dto.getUserId());
-        review.setBookId(dto.getBookId());
+//        review.setUserId(dto.getUserId());
+//        review.setBookId(dto.getBookId());
         reviewRepository.save(review);
     }
 
@@ -66,9 +66,9 @@ public class ReviewService {
                 review.getId(),
                 review.getContent(),
                 review.getRating(),
-                review.getIsEdited(),
-                review.getUserId(),
-                review.getBookId()
+                review.getIsEdited()
+//                review.getUserId(),
+//                review.getBookId()
         );
     }
 }

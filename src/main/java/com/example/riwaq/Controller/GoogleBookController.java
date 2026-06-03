@@ -1,5 +1,6 @@
 package com.example.riwaq.Controller;
 
+import com.example.riwaq.DTO.GoogleBookDto;
 import com.example.riwaq.Service.GoogleBookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ public class GoogleBookController {
     private final GoogleBookService googleBookService;
 
     @GetMapping("/search")
-    public String searchBook(@RequestParam String title) {
+    public GoogleBookDto searchBook(@RequestParam String title) {
         return googleBookService.searchBook(title);
     }
 }

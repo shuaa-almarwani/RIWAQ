@@ -32,11 +32,11 @@ public class Review {
     @Column(nullable = false)
     private Boolean isEdited = false;
 
-    @NotNull
-    private Integer userId;
-
-    @NotNull
-    private Integer bookId;
+//    @NotNull
+//    private Integer userId;
+//
+//    @NotNull
+//    private Integer bookId;
 
      @ManyToOne
      @JoinColumn(name = "user_id", insertable = false, updatable = false)

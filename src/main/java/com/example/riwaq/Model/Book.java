@@ -26,4 +26,8 @@ public class Book {
     @JsonIgnore
     @OneToMany(mappedBy = "book")
     private Set<UserBook> userBooks;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "book")
+    private Set<Review> reviews;
 }

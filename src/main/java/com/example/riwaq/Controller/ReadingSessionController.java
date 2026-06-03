@@ -25,16 +25,16 @@ public class ReadingSessionController {
         return ResponseEntity.status(200).body(readingSessionService.getAllSessions());
     }
 
-    @PutMapping("/update/{sessionId}")
-    public ResponseEntity<?> updateSession(@PathVariable Integer sessionId, @RequestBody @Valid com.example.riwaq.DTO.IN.FriendshipDTOIn.ReadingSessionDTOIn dto){
-        readingSessionService.updateSession(sessionId,dto);
-        return ResponseEntity.status(200).body(new ApiResponse("Session updated successfully"));
-    }
-
-    @DeleteMapping("/delete/{sessionId}")
-    public ResponseEntity<?> deleteSession(@PathVariable Integer sessionId){
-        readingSessionService.deleteSession(sessionId);
-        return ResponseEntity.status(200).body(new ApiResponse("Session deleted successfully"));
-    }
+//    @PutMapping("/update/{sessionId}")
+//    public ResponseEntity<?> updateSession(@PathVariable Integer sessionId, @RequestBody @Valid com.example.riwaq.DTO.IN.FriendshipDTOIn.ReadingSessionDTOIn dto){
+//        readingSessionService.updateSession(sessionId,dto);
+//        return ResponseEntity.status(200).body(new ApiResponse("Session updated successfully"));
+//    }
+//
+//    @DeleteMapping("/delete/{sessionId}")
+//    public ResponseEntity<?> deleteSession(@PathVariable Integer sessionId){
+//        readingSessionService.deleteSession(sessionId);
+//        return ResponseEntity.status(200).body(new ApiResponse("Session deleted successfully"));
+//    }
 
 }

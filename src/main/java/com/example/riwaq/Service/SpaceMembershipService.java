@@ -49,28 +49,28 @@ public class SpaceMembershipService {
 
         return dtoOutList;
     }
+//
+//    public void updateMembership(Integer membershipId,
+//                                 PostDTOIn.SpaceMembershipDTOIn dto){
+//
+//        SpaceMembership membership = spaceMembershipRepository
+//                .findByMembershipId(membershipId)
+//                .orElseThrow(() ->
+//                        new ApiException("Membership not found"));
+//
+//        membership.setSpaceId(dto.getSpaceId());
+//        membership.setUserId(dto.getUserId());
+//
+//        spaceMembershipRepository.save(membership);
+//    }
 
-    public void updateMembership(Integer membershipId,
-                                 PostDTOIn.SpaceMembershipDTOIn dto){
-
-        SpaceMembership membership = spaceMembershipRepository
-                .findByMembershipId(membershipId)
-                .orElseThrow(() ->
-                        new ApiException("Membership not found"));
-
-        membership.setSpaceId(dto.getSpaceId());
-        membership.setUserId(dto.getUserId());
-
-        spaceMembershipRepository.save(membership);
-    }
-
-    public void deleteMembership(Integer membershipId){
-
-        SpaceMembership membership = spaceMembershipRepository
-                .findByMembershipId(membershipId)
-                .orElseThrow(() ->
-                        new ApiException("Membership not found"));
-
-        spaceMembershipRepository.delete(membership);
-    }
+//    public void deleteMembership(Integer membershipId){
+//
+//        SpaceMembership membership = spaceMembershipRepository
+//                .findByMembershipId(membershipId)
+//                .orElseThrow(() ->
+//                        new ApiException("Membership not found"));
+//
+//        spaceMembershipRepository.delete(membership);
+//    }
 }
