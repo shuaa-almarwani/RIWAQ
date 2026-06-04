@@ -24,6 +24,21 @@ public class ReviewController {
         return ResponseEntity.ok(reviewService.getReviewById(id));
     }
 
+    @GetMapping("/filter/highestRated")
+    public ResponseEntity<?> getBestRatedReviews() {
+        return ResponseEntity.ok(reviewService.getBestRatedReviews());
+    }
+
+    @GetMapping("/filter/lowestRated")
+    public ResponseEntity<?> getLowestRatedReviews() {
+        return ResponseEntity.ok(reviewService.getLowestRatedReviews());
+    }
+
+    @GetMapping("/filter/recent")
+    public ResponseEntity<?> getRecentReviews() {
+        return ResponseEntity.ok(reviewService.getRecentReviews());
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> addReview(@RequestBody @Valid ReviewDTOIn dto) {
         reviewService.addReview(dto);

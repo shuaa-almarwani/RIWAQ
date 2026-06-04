@@ -11,6 +11,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     Post findPostById(Integer id);
     List<Post> findPostsByUserId(Integer userId);
     List<Post> findPostsByUserBookId(Integer userBookId);
+    List<Post> findPostsByUserBookIdAndPageNumberLessThanEqual(Integer userBookId, Integer currentPage);
 
     Integer countPostsByUserBook_Book_Id(Integer bookId);
     List<Post> findPostsByUserBook_Book_Id(Integer bookId);

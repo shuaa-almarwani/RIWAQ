@@ -18,16 +18,6 @@ public class FriendshipDTOOut {
     @AllArgsConstructor
     @NoArgsConstructor
     @Data
-    public static class SessionParticipantDTOOut {
-
-        private Integer participantId;
-        private Integer sessionId;
-        private Integer userId;
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Data
     public static class SpaceMembershipDTOOut {
 
         private Integer membershipId;

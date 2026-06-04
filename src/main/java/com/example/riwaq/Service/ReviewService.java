@@ -32,6 +32,26 @@ public class ReviewService {
         return convertToDTO(review);
     }
 
+    public List<ReviewDTOOut> getBestRatedReviews() {
+        List<Review> reviews = reviewRepository.findAllByOrderByRatingDesc();
+        if (reviews.isEmpty()) {
+            throw new ApiException("No reviews found");
+        }
+        return reviews.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    public List<ReviewDTOOut> getLowestRatedReviews() {
+        List<Review> reviews = reviewRepository.findAllByOrderByRatingAsc();
+        if (reviews.isEmpty()) {
+            throw new ApiException("No reviews found");
+        }
+        return reviews.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    public List<ReviewDTOOut> getRecentReviews() {
+        return reviewRepository.findAllByOrderByCreatedAtDesc().stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
     public void addReview(ReviewDTOIn dto) {
         Review review = new Review();
         review.setContent(dto.getContent());

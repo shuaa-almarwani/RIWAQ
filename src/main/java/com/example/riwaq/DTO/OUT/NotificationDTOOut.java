@@ -18,13 +18,4 @@ public class NotificationDTOOut {
     private LocalDateTime createdAt;
     private Integer recipientId;
     private Integer senderId;
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Data
-    public static class ReadingSessionDTOOut {
-
-        private Integer sessionId;
-        private Integer bookId;
-    }
 }

@@ -39,6 +39,14 @@ public class PostService {
         return convertToDTO(post);
     }
 
+    public List<PostDTOOut> getPostsByCurrentPage(Integer userBookId, Integer currentPage) {
+        List<Post> posts = postRepository.findPostsByUserBookIdAndPageNumberLessThanEqual(userBookId, currentPage);
+        if (posts.isEmpty()) {
+            throw new ApiException("No posts found for this book up to page: " + currentPage);
+        }
+        return posts.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
     public void addPost(PostDTOIn dto) {
         Post post = new Post();
         post.setContent(dto.getContent());
@@ -84,6 +92,7 @@ public class PostService {
                 post.getId(),
                 post.getContent(),
                 post.getPageNumber(),
+                post.getLikeCounter(),
 //                post.getUserId(),
 //                post.getUserBookId()
                 post.getUser().getId(),

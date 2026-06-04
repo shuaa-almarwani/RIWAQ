@@ -13,6 +13,7 @@ public class PostDTOOut {
     private Integer pageNumber;
     private Integer userId;
     private Integer userBookId;
+    private Integer likeCounter;
 
     @AllArgsConstructor
     @NoArgsConstructor

@@ -24,12 +24,12 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final UserRepository userRepository;
-    private final GoogleBookService googleBookService;
 
     //
     private final ReviewRepository reviewRepository;
     private final PostRepository postRepository;
     private final OpenAIService openAIService;
+    private final GoogleBookService googleBookService;
 
     public void addBook(Integer userId, BookDto dto) {
 
