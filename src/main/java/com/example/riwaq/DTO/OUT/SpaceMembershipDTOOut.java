@@ -1,4 +1,4 @@
-package com.example.riwaq.DTO.Out;
+package com.example.riwaq.DTO.OUT;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostLikeDTOOut {
-    private Integer id;
+@Data
+public class SpaceMembershipDTOOut {
+
+    private Integer membershipId;
+    private Integer spaceId;
     private Integer userId;
-    private Integer postId;
-    private LocalDateTime createdAt;
+    private LocalDateTime joinedAt;
 }

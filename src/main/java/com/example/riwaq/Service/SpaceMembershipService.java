@@ -1,8 +1,8 @@
 package com.example.riwaq.Service;
 
 import com.example.riwaq.Api.ApiException;
-import com.example.riwaq.DTO.In.SpaceMembershipDTOIn;
-import com.example.riwaq.DTO.Out.SpaceMembershipDTOOut;
+import com.example.riwaq.DTO.IN.SpaceMembershipDTOIn;
+import com.example.riwaq.DTO.OUT.SpaceMembershipDTOOut;
 import com.example.riwaq.Model.Space;
 import com.example.riwaq.Model.SpaceMembership;
 import com.example.riwaq.Repository.SpaceMembershipRepository;

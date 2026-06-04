@@ -1,7 +1,7 @@
 package com.example.riwaq.Controller;
 
 import com.example.riwaq.Api.ApiResponse;
-import com.example.riwaq.DTO.In.SpaceMembershipDTOIn;
+import com.example.riwaq.DTO.IN.SpaceMembershipDTOIn;
 import com.example.riwaq.Service.SpaceMembershipService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
