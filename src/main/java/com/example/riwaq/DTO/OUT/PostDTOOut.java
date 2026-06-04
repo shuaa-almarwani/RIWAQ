@@ -14,4 +14,15 @@ public class PostDTOOut {
     private Integer userId;
     private Integer userBookId;
     private Integer likeCounter;
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    public static class SpaceDTOOut {
+
+        private Integer spaceId;
+        private Integer bookId;
+        private String name;
+        private String description;
+    }
 }

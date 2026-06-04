@@ -12,6 +12,6 @@ public class ReviewDTOOut {
     private String content;
     private Integer rating;
     private Boolean isEdited;
-    private Integer userId;
-    private Integer bookId;
+//    private Integer userId;
+//    private Integer bookId;
 }

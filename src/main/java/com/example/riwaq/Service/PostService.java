@@ -4,7 +4,11 @@ import com.example.riwaq.Api.ApiException;
 import com.example.riwaq.DTO.IN.PostDTOIn;
 import com.example.riwaq.DTO.OUT.PostDTOOut;
 import com.example.riwaq.Model.Post;
+import com.example.riwaq.Model.User;
+import com.example.riwaq.Model.UserBook;
 import com.example.riwaq.Repository.PostRepository;
+import com.example.riwaq.Repository.UserBookRepository;
+import com.example.riwaq.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,9 @@ import java.util.stream.Collectors;
 public class PostService {
 
     private final PostRepository postRepository;
+
+    private final UserRepository userRepository;
+    private final UserBookRepository userBookRepository;
 
     public List<PostDTOOut> getAllPosts() {
         return postRepository.findAll()
@@ -44,8 +51,13 @@ public class PostService {
         Post post = new Post();
         post.setContent(dto.getContent());
         post.setPageNumber(dto.getPageNumber());
-        post.setUserId(dto.getUserId());
-        post.setUserBookId(dto.getUserBookId());
+//        post.setUserId(dto.getUserId());
+//        post.setUserBookId(dto.getUserBookId());
+        User user = userRepository.findUserById(dto.getUserId());
+        UserBook userBook = userBookRepository.findUserBookById(dto.getUserBookId());
+
+        post.setUser(user);
+        post.setUserBook(userBook);
         postRepository.save(post);
     }
 
@@ -56,8 +68,14 @@ public class PostService {
         }
         post.setContent(dto.getContent());
         post.setPageNumber(dto.getPageNumber());
-        post.setUserId(dto.getUserId());
-        post.setUserBookId(dto.getUserBookId());
+//        post.setUserId(dto.getUserId());
+//        post.setUserBookId(dto.getUserBookId());
+
+        User user = userRepository.findUserById(dto.getUserId());
+        UserBook userBook = userBookRepository.findUserBookById(dto.getUserBookId());
+
+        post.setUser(user);
+        post.setUserBook(userBook);
         postRepository.save(post);
     }
 
@@ -74,9 +92,11 @@ public class PostService {
                 post.getId(),
                 post.getContent(),
                 post.getPageNumber(),
-                post.getUserId(),
-                post.getUserBookId(),
-                post.getLikeCounter()
+                post.getLikeCounter(),
+//                post.getUserId(),
+//                post.getUserBookId()
+                post.getUser().getId(),
+                post.getUserBook().getId()
         );
     }
 }

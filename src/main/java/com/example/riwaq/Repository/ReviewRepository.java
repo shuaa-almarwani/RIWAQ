@@ -15,4 +15,6 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     List<Review> findAllByOrderByRatingDesc();
     List<Review> findAllByOrderByRatingAsc();
     List<Review> findAllByOrderByCreatedAtDesc();
+
+    Integer countReviewsByBook_Id(Integer bookId);
 }
