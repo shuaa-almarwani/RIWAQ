@@ -1,8 +1,8 @@
 package com.example.riwaq.Service;
 
 import com.example.riwaq.Api.ApiException;
-import com.example.riwaq.DTO.IN.FriendshipDTOIn;
-import com.example.riwaq.DTO.OUT.NotificationDTOOut;
+import com.example.riwaq.DTO.IN.ReadingSessionDTOIn;
+import com.example.riwaq.DTO.OUT.ReadingSessionDTOOut;
 import com.example.riwaq.Model.ReadingSession;
 import com.example.riwaq.Repository.ReadingSessionRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,9 +47,9 @@ public class ReadingSessionService {
         return dtoOutList;
     }
 
-//    public void updateSession(Integer sessionId,
-//                              FriendshipDTOIn.ReadingSessionDTOIn dto){
-//
+    public void updateSession(Integer sessionId,
+                              ReadingSessionDTOIn dto){
+
 //        ReadingSession session = readingSessionRepository
 //                .findBySessionId(sessionId)
 //                .orElseThrow(() ->
@@ -58,15 +58,15 @@ public class ReadingSessionService {
 //        session.setBookId(dto.getBookId());
 //
 //        readingSessionRepository.save(session);
-//    }
+    }
 
-//    public void deleteSession(Integer sessionId){
-//
+    public void deleteSession(Integer sessionId){
+
 //        ReadingSession session = readingSessionRepository
 //                .findBySessionId(sessionId)
 //                .orElseThrow(() ->
 //                        new ApiException("Session not found"));
 //
 //        readingSessionRepository.delete(session);
-//    }
+    }
 }

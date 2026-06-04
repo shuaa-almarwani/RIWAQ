@@ -1,8 +1,8 @@
 package com.example.riwaq.Service;
 
 import com.example.riwaq.Api.ApiException;
-import com.example.riwaq.DTO.IN.PostDTOIn;
-import com.example.riwaq.DTO.OUT.FriendshipDTOOut;
+import com.example.riwaq.DTO.IN.SpaceMembershipDTOIn;
+import com.example.riwaq.DTO.OUT.SpaceMembershipDTOOut;
 import com.example.riwaq.Model.SpaceMembership;
 import com.example.riwaq.Repository.SpaceMembershipRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,10 +49,10 @@ public class SpaceMembershipService {
 
         return dtoOutList;
     }
-//
-//    public void updateMembership(Integer membershipId,
-//                                 PostDTOIn.SpaceMembershipDTOIn dto){
-//
+
+    public void updateMembership(Integer membershipId,
+                                 SpaceMembershipDTOIn dto){
+
 //        SpaceMembership membership = spaceMembershipRepository
 //                .findByMembershipId(membershipId)
 //                .orElseThrow(() ->
@@ -66,6 +66,10 @@ public class SpaceMembershipService {
 
 //    public void deleteMembership(Integer membershipId){
 //
+    }
+
+    public void deleteMembership(Integer membershipId){
+
 //        SpaceMembership membership = spaceMembershipRepository
 //                .findByMembershipId(membershipId)
 //                .orElseThrow(() ->
@@ -73,4 +77,5 @@ public class SpaceMembershipService {
 //
 //        spaceMembershipRepository.delete(membership);
 //    }
+    }
 }

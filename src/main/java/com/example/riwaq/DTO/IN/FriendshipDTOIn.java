@@ -1,6 +1,6 @@
 package com.example.riwaq.DTO.IN;
 
-import jakarta.validation.constraints.NotEmpty;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,6 @@ public class FriendshipDTOIn {
     @NotNull(message = "Receiver ID must not be null")
     private Integer receiverId;
 
-    @NotEmpty(message = "Status must not be empty")
     @Pattern(regexp = "PENDING|ACCEPTED|BLOCKED|REJECTED", message = "Status must be PENDING, ACCEPTED, BLOCKED, or REJECTED")
     private String status;
 
