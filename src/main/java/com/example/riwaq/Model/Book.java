@@ -31,4 +31,8 @@ public class Book {
     @JsonIgnore
     @OneToMany(mappedBy = "book")
     private Set<Review> reviews;
+
+   @JsonIgnore
+    @OneToMany(mappedBy = "book")
+    private Set<Space>  spaces;
 }
