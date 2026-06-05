@@ -71,5 +71,13 @@ public class UserBookController {
                         )
                 );
     }
+    @GetMapping("/almost-complete/{userId}")
+    public ResponseEntity getAlmostCompletedBooks(
+            @PathVariable Integer userId){
 
+        return ResponseEntity.status(200)
+                .body(
+                        userBookService.getAlmostCompletedBooks(userId)
+                );
+    }
 }

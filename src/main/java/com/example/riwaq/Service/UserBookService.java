@@ -93,7 +93,7 @@ public class UserBookService {
 
         if (userBook.getStatus().equals("COMPLETED") && userBook.getFinishedAt() == null) {
             userBook.setFinishedAt(LocalDate.now());
-
+            userBook.setProgressPercentage(100);
             notificationService.sendBookCompletedNotification(
                     userBook.getUser().getId(),
                     book.getTitle()
@@ -108,9 +108,11 @@ public class UserBookService {
         }
 
 
+        Integer progress =
+                (dto.getCurrentPage() * 100)
+                        / book.getPageCount();
 
-
-
+        userBook.setProgressPercentage(progress);
 
         userBookRepository.save(userBook);
     }
@@ -170,6 +172,11 @@ public class UserBookService {
         long longestDays = 0;
         String longestBook = "No completed books yet";
 
+        int totalProgress = 0;
+        int almostCompletedBooks = 0;
+        int highestProgress = 0;
+        String highestProgressBook = "No books yet";
+
         for(UserBook userBook : userBooks){
 
             if(userBook.getStatus().equals("COMPLETED")){
@@ -196,6 +203,27 @@ public class UserBookService {
                     longestBook = userBook.getBook().getTitle();
                 }
             }
+            Integer progress = userBook.getProgressPercentage();
+
+            if(progress == null){
+                progress = 0;
+            }
+
+            totalProgress += progress;
+
+            if(progress >= 80 && progress < 100){
+                almostCompletedBooks++;
+            }
+
+            if(progress > highestProgress){
+                highestProgress = progress;
+                highestProgressBook = userBook.getBook().getTitle();
+            }
+        }
+        int averageProgress = 0;
+
+        if(!userBooks.isEmpty()){
+            averageProgress = totalProgress / userBooks.size();
         }
 
 //        String prompt =
@@ -225,6 +253,10 @@ public class UserBookService {
                         + " لمدة "
                         + longestDays
                         + " يومًا. "
+                        + ", متوسط التقدم = " + averageProgress + "%"
+                        + ", عدد الكتب القريبة من الانتهاء = " + almostCompletedBooks
+                        + ", أكثر كتاب متقدم فيه القارئ = " + highestProgressBook
+                        + " بنسبة " + highestProgress + "%. "
                         + "اكتب وصفًا قصيرًا للقارئ ونصيحة واحدة لتحسين عاداته القرائية.";
 
         Map<String, String> aiAnalysis =
@@ -239,6 +271,11 @@ public class UserBookService {
         response.put("longestBook", longestBook);
         response.put("longestDays", longestDays);
         response.put("aiAnalysis", aiAnalysis);
+        response.put("almostCompletedBooks", almostCompletedBooks);
+        response.put("averageProgress", averageProgress+ " %");
+        response.put("highestProgressBook", highestProgressBook);
+        response.put("highestProgress", highestProgress + " %");
+
 
         return response;
     }
@@ -278,5 +315,21 @@ public class UserBookService {
         String suggestions = aiResponse.get("similarBooks");
 
         return List.of(suggestions.split("\n"));
+    }
+    public List<UserBook> getAlmostCompletedBooks(Integer userId){
+
+        List<UserBook> books =
+                userBookRepository
+                        .findUserBooksByUser_IdAndProgressPercentageGreaterThanEqualAndProgressPercentageLessThan(
+                                userId,
+                                80,
+                                100
+                        );
+
+        if(books.isEmpty()){
+            throw new ApiException("No almost completed books found");
+        }
+
+        return books;
     }
 }

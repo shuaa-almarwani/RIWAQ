@@ -31,4 +31,9 @@ public interface UserBookRepository extends JpaRepository<UserBook, Integer> {
             Integer bookId
     );
 
+    List<UserBook> findUserBooksByUser_IdAndProgressPercentageGreaterThanEqualAndProgressPercentageLessThan(
+            Integer userId,
+            Integer minProgress,
+            Integer maxProgress
+    );
 }
