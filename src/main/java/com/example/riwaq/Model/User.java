@@ -35,4 +35,16 @@ public class User {
     private Set<Review> reviews;
 
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Friendship>  friendships;
+
+    @JsonIgnore
+    @OneToMany
+    private Set<SpaceMembership>  spaceMemberships;
+
 }
