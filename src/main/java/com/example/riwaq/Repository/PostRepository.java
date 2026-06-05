@@ -15,4 +15,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     Integer countPostsByUserBook_Book_Id(Integer bookId);
     List<Post> findPostsByUserBook_Book_Id(Integer bookId);
+    List<Post> findPostsByUser_IdInOrderByCreatedAtDesc(List<Integer> userIds);
+    List<Post> findAllByOrderByLikeCounterDesc();
 }

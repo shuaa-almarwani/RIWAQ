@@ -13,4 +13,11 @@ public interface UserBookRepository extends JpaRepository<UserBook, Integer> {
     List<UserBook> findUserBooksByUser_IdAndStatus(
             Integer userId,
             String status
-    );}
+    );
+
+    List<UserBook> findUserBooksByBook_IdAndStatusAndCurrentPageGreaterThanEqual(
+            Integer bookId,
+            String status,
+            Integer currentPage
+    );
+}

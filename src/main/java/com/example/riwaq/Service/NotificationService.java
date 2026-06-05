@@ -2,6 +2,7 @@ package com.example.riwaq.Service;
 
 import com.example.riwaq.Api.ApiException;
 
+import com.example.riwaq.DTO.OUT.NotificationDTOOut;
 import com.example.riwaq.Model.Notification;
 import com.example.riwaq.Model.User;
 import com.example.riwaq.Repository.NotificationRepository;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,11 +21,14 @@ public class NotificationService {
     private final UserRepository userRepository;
     private final EmailService emailService;
 
-    public List<Notification> getAllNotifications() {
-        return notificationRepository.findAll();
+    public List<NotificationDTOOut> getAllNotifications() {
+        return notificationRepository.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    public List<Notification> getNotificationsByUserId(Integer userId) {
+    public List<NotificationDTOOut> getNotificationsByUserId(Integer userId) {
 
         User user = userRepository.findUserById(userId);
 
@@ -38,7 +43,9 @@ public class NotificationService {
             throw new ApiException("No notifications found");
         }
 
-        return notifications;
+        return notifications.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     public void sendWelcomeNotification(Integer userId) {
@@ -73,9 +80,32 @@ public class NotificationService {
                 message);
     }
 
+    public void sendPostAboutCurrentBookNotification(Integer userId,
+                                                     String bookTitle,
+                                                     Integer postId) {
+
+        String message =
+        "تمت مشاركة منشور جديد حول كتاب " + bookTitle +
+        ". اكتشف آراء القرّاء وتفاعل معهم.";
+
+        sendNotification(userId,
+                "POST_ABOUT_CURRENT_BOOK",
+                message,
+                postId,
+                "POST");
+    }
+
     private void sendNotification(Integer userId,
                                   String type,
                                   String message) {
+        sendNotification(userId, type, message, null, null);
+    }
+
+    private void sendNotification(Integer userId,
+                                  String type,
+                                  String message,
+                                  Integer referenceId,
+                                  String referenceType) {
 
         User user = userRepository.findUserById(userId);
 
@@ -99,6 +129,10 @@ public class NotificationService {
                 subject = "تهانينا على إنهاء الكتاب 🎉";
                 break;
 
+            case "POST_ABOUT_CURRENT_BOOK":
+            subject = "منشور جديد حول كتابك الحالي 📖";
+            break;
+
             default:
                 subject = "إشعار من رواق";
         }
@@ -118,7 +152,24 @@ public class NotificationService {
         notification.setUserId(user.getId());
         notification.setType(type);
         notification.setMessage(message);
+        notification.setReferenceId(referenceId);
+        notification.setReferenceType(referenceType);
 
         notificationRepository.save(notification);
+    }
+
+    private NotificationDTOOut convertToDTO(Notification notification) {
+        return new NotificationDTOOut(
+                notification.getId(),
+                notification.getUserId(),
+                notification.getMessage(),
+                notification.getStatus(),
+                notification.getType(),
+                notification.getReferenceId(),
+                notification.getReferenceType(),
+                notification.getCreatedAt(),
+                notification.getSentByEmail(),
+                notification.getSentByWhatsApp()
+        );
     }
 }

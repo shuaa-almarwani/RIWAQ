@@ -26,6 +26,14 @@ public class Post {
 
     private Integer likeCounter = 0;
 
+    private String summary;
+
+    private String postType;
+
+    private Boolean analysisGenerated = false;
+
+    private LocalDateTime analyzedAt;
+
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;

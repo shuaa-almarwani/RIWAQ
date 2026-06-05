@@ -4,6 +4,7 @@ import com.example.riwaq.Api.ApiException;
 import com.example.riwaq.DTO.BookDto;
 //import com.example.riwaq.DTO.GoogleBookDto;
 import com.example.riwaq.DTO.GoogleBookDto;
+import com.example.riwaq.DTO.OUT.TopRatedBookDTOOut;
 import com.example.riwaq.Model.Book;
 import com.example.riwaq.Model.Post;
 import com.example.riwaq.Model.User;
@@ -125,6 +126,17 @@ public class BookService {
 
         return books;
     }
+
+    public List<TopRatedBookDTOOut> getTopRatedBooks() {
+        List<TopRatedBookDTOOut> books = reviewRepository.findTopRatedBooks();
+
+        if (books.isEmpty()) {
+            throw new ApiException("No reviewed books found");
+        }
+
+        return books;
+    }
+
     public Map<String, Object> getBookDashboard(Integer bookId){
 
         Book book = bookRepository.findBookById(bookId);

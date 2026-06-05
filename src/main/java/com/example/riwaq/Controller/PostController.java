@@ -30,6 +30,21 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostsByCurrentPage(userBookId, currentPage));
     }
 
+    @GetMapping("/book/{bookId}")
+    public ResponseEntity<?> getPostsByBookId(@PathVariable Integer bookId) {
+        return ResponseEntity.ok(postService.getPostsByBookId(bookId));
+    }
+
+    @GetMapping("/friends/{userId}")
+    public ResponseEntity<?> getPostsFromFriends(@PathVariable Integer userId) {
+        return ResponseEntity.ok(postService.getPostsFromFriends(userId));
+    }
+
+    @GetMapping("/filter/most-liked")
+    public ResponseEntity<?> getMostLikedPosts() {
+        return ResponseEntity.ok(postService.getMostLikedPosts());
+    }
+
     @PostMapping("/add/{userId}")
     public ResponseEntity<?> addPost(@PathVariable Integer userId, @RequestBody @Valid PostDTOIn dto) {
         postService.addPost(userId, dto);

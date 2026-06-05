@@ -53,6 +53,14 @@ public class BookController {
         return ResponseEntity.status(200)
                 .body(bookService.getBooksByAuthor(author));
     }
+
+    @GetMapping("/filter/top-rated")
+    public ResponseEntity getTopRatedBooks(){
+
+        return ResponseEntity.status(200)
+                .body(bookService.getTopRatedBooks());
+    }
+
     @PostMapping("/add-google/{userId}")
     public ResponseEntity addBookFromGoogle(@PathVariable Integer userId,
                                             @RequestParam String title) {

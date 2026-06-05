@@ -16,6 +16,11 @@ public class NotificationController {
     public ResponseEntity<?> getAllNotifications() {
         return ResponseEntity.ok(notificationService.getAllNotifications());
     }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getNotificationsByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.ok(notificationService.getNotificationsByUserId(userId));
+    }
 //
 //    @GetMapping("/get/{id}")
 //    public ResponseEntity<?> getNotificationById(@PathVariable Integer id) {
