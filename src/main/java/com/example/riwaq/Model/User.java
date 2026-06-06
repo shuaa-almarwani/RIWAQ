@@ -51,7 +51,13 @@ public class User {
     private Set<Friendship> receivedFriendships;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private Set<SpaceMembership>  spaceMemberships;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<PostLike> postLikes;
+
+
 
 }
