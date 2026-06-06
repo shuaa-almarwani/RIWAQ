@@ -20,13 +20,6 @@ public class PostLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    @Column(name = "user_id")
-    private Integer userId;
-
-    @NotNull
-    @Column(name = "post_id")
-    private Integer postId;
 
     @CreationTimestamp
     @Column(updatable = false)

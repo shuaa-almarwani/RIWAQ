@@ -19,22 +19,16 @@ public class Friendship {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
-    private Integer senderId;
-
-    @NotNull
-    private Integer receiverId;
-
-    @Pattern(regexp = "PENDING|ACCEPTED|REJECTED", message = "Status must be PENDING, ACCEPTED, BLOCKED, or REJECTED")
+    @Pattern(regexp = "PENDING|ACCEPTED|REJECTED", message = "Status must be PENDING, ACCEPTED or REJECTED")
     @Column(nullable = false)
     private String status = "PENDING";
 
     @ManyToOne
-    @JoinColumn(name = "senderId", insertable = false, updatable = false)
+    @JoinColumn(name = "sender_id", nullable = false)
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "receiverId", insertable = false, updatable = false)
+    @JoinColumn(name = "receiver_id", nullable = false)
     private User receiver;
 
     @JsonIgnore
