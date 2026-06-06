@@ -18,7 +18,7 @@ public class UserBookController {
 
     private final UserBookService userBookService;
     @PostMapping("/add/{userId}/{bookId}")
-    public ResponseEntity addUserBook(@PathVariable Integer userId,
+    public ResponseEntity<?> addUserBook(@PathVariable Integer userId,
                                       @PathVariable Integer bookId,
                                       @RequestBody @Valid UserBookDtoIn dto) {
         userBookService.addUserBook(userId, bookId, dto);
@@ -26,25 +26,25 @@ public class UserBookController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity getAllUserBooks() {
+    public ResponseEntity<?> getAllUserBooks() {
         return ResponseEntity.status(200).body(userBookService.getAllUserBooks());
     }
 
     @PutMapping("/update-progress/{userBookId}")
-    public ResponseEntity updateProgress(@PathVariable Integer userBookId,
+    public ResponseEntity<?> updateProgress(@PathVariable Integer userBookId,
                                          @RequestBody @Valid UserBookDtoIn dto) {
         userBookService.updateProgress(userBookId, dto);
         return ResponseEntity.status(200).body(new ApiResponse("Reading progress updated successfully"));
     }
 
     @DeleteMapping("/delete/{userBookId}")
-    public ResponseEntity deleteUserBook(@PathVariable Integer userBookId) {
+    public ResponseEntity<?> deleteUserBook(@PathVariable Integer userBookId) {
         userBookService.deleteUserBook(userBookId);
         return ResponseEntity.status(200).body(new ApiResponse("User book deleted successfully"));
     }
     //
     @GetMapping("/status/{userId}/{status}")
-    public ResponseEntity getBooksByStatus(
+    public ResponseEntity<?> getBooksByStatus(
             @PathVariable Integer userId,
             @PathVariable String status){
 
@@ -53,14 +53,14 @@ public class UserBookController {
     }
 
     @GetMapping("/dashboard/{userId}")
-    public ResponseEntity getDashboard(@PathVariable Integer userId){
+    public ResponseEntity<?> getDashboard(@PathVariable Integer userId){
 
         return ResponseEntity.status(200)
                 .body(userBookService.getDashboard(userId));
     }
 
     @GetMapping("/between-dates")
-    public ResponseEntity getBooksBetweenDates(
+    public ResponseEntity<?> getBooksBetweenDates(
             @RequestParam LocalDate startDate,
             @RequestParam LocalDate endDate){
 
@@ -73,7 +73,7 @@ public class UserBookController {
                 );
     }
     @GetMapping("/almost-complete/{userId}")
-    public ResponseEntity getAlmostCompletedBooks(
+    public ResponseEntity<?> getAlmostCompletedBooks(
             @PathVariable Integer userId){
 
         return ResponseEntity.status(200)
@@ -83,7 +83,7 @@ public class UserBookController {
     }
 
     @PostMapping("/check-reminders")
-    public ResponseEntity checkReminders() {
+    public ResponseEntity<?> checkReminders() {
 
         userBookService.sendInactiveReadersReminders();
 

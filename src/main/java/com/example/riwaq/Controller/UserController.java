@@ -16,37 +16,37 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/add")
-    public ResponseEntity addUser(@RequestBody @Valid UserDtoIn dto) {
+    public ResponseEntity<?> addUser(@RequestBody @Valid UserDtoIn dto) {
         userService.addUser(dto);
         return ResponseEntity.status(201).body(new ApiResponse("User added successfully"));
     }
 
     @GetMapping("/get")
-    public ResponseEntity getAllUsers() {
+    public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.status(200).body(userService.getAllUsers());
     }
 
     @PutMapping("/update/{userId}")
-    public ResponseEntity updateUser(@PathVariable Integer userId,
+    public ResponseEntity<?> updateUser(@PathVariable Integer userId,
                                      @RequestBody @Valid UserDtoIn dto) {
         userService.updateUser(userId, dto);
         return ResponseEntity.status(200).body(new ApiResponse("User updated successfully"));
     }
 
     @DeleteMapping("/delete/{userId}")
-    public ResponseEntity deleteUser(@PathVariable Integer userId) {
+    public ResponseEntity<?> deleteUser(@PathVariable Integer userId) {
         userService.deleteUser(userId);
         return ResponseEntity.status(200).body(new ApiResponse("User deleted successfully"));
     }
     //
     @GetMapping("/username/{username}")
-    public ResponseEntity getUserByUsername(@PathVariable String username){
+    public ResponseEntity<?> getUserByUsername(@PathVariable String username){
 
         return ResponseEntity.status(200)
                 .body(userService.getUserByUsername(username));
     }
     @GetMapping("/email/{email}")
-    public ResponseEntity getUserByEmail(@PathVariable String email){
+    public ResponseEntity<?> getUserByEmail(@PathVariable String email){
 
         return ResponseEntity.status(200)
                 .body(userService.findUserByEmail(email));
